@@ -14,9 +14,10 @@ public class MyView {
         this.viewPath = viewPath;
     }
 
-    // JSP 서블릿 호출
     public void render(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        // 호출할 JSP 경로 설정
         RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
+        // JSP 서블릿 호출
         dispatcher.forward(req, res);
     }
 
@@ -28,6 +29,7 @@ public class MyView {
     }
 
     private void modelToRequestAttributes(Map<String, Object> model, HttpServletRequest req) {
+        // JSP 로 모델 데이터 전달을 위해, req 에 속성 설정
         model.forEach((key, value) -> req.setAttribute(key, value));
     }
 }
